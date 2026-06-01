@@ -1,4 +1,4 @@
-# RAG_simple — PDF/Image RAG with Hybrid Retrieval + Reranking
+# PDF/Image RAG with Hybrid Retrieval + Reranking
 
 A Retrieval-Augmented Generation system that ingests **PDFs and images**, turns
 everything into text (PyMuPDF text extraction, GPT-4o vision captions, Tesseract
