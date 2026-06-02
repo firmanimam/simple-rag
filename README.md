@@ -30,18 +30,6 @@ query → [BM25 top-k] + [Chroma dense top-k]
 | PDF parsing      | PyMuPDF                                            |
 | OCR / vision     | Tesseract + GPT-4o vision                          |
 
-## Prerequisites
-
-System binaries (macOS / Homebrew):
-
-```bash
-brew install tesseract poppler
-```
-
-- **Tesseract** powers OCR for scanned pages / images.
-- **Poppler** backs `pdf2image` (optional fallback rendering).
-
-Python deps are managed by **uv** (already pinned in `pyproject.toml` / `uv.lock`).
 
 ## Setup
 
@@ -53,10 +41,6 @@ uv sync
 cp .env.example .env
 # edit .env and set OPENAI_API_KEY=sk-...
 ```
-
-> The app reads `.env` automatically (pydantic-settings). All keys are optional
-> except `OPENAI_API_KEY`, which is required for embeddings, answers, and vision
-> captions.
 
 ## Run
 
@@ -71,8 +55,7 @@ uv run streamlit run frontend/streamlit_app.py
 ```
 
 Then open the Streamlit app, upload PDFs/images in the sidebar, click **Ingest**,
-and start asking questions. If the frontend runs on a different host, point it at
-the backend with `BACKEND_URL=http://host:8000`.
+and start asking questions.
 
 ## API
 
@@ -127,10 +110,4 @@ frontend/
   api_client.py      httpx wrapper over the backend
 data/                uploads/ + chroma_db/ (gitignored)
 tests/
-```
-
-## Tests
-
-```bash
-uv run pytest -q
 ```
